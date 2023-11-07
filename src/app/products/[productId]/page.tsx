@@ -5,9 +5,6 @@ import { images } from "@/components/shop/_data";
 import { useParams } from "next/navigation";
 import { products } from "@/components/shop/_data";
 
-//trocar nome da vairal de foundId para product
-//passar ele como props pro componente productdetails
-
 const ProductPage = () => {
   const params = useParams();
   const productId = params.productId;

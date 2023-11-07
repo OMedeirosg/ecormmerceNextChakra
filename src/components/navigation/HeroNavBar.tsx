@@ -1,5 +1,6 @@
 "use client";
 
+import { AiOutlineShoppingCart } from "react-icons/ai";
 import {
   Box,
   Container,
@@ -17,16 +18,26 @@ import { FiSearch, FiBell } from "react-icons/fi";
 import { CategoryCollapse } from "./CategoryCollapse";
 import { Logo } from "./Logo";
 import { MobileDrawer } from "./MobileDrawer";
+import { link } from "fs";
+import Link from "next/link";
+import {
+  Drawer,
+  DrawerBody,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+} from "@chakra-ui/react";
+import React from "react";
+import { useDisclosure } from "@chakra-ui/react";
+import { ShopDrawer } from "../shop/shopdrawer";
 
 export const HeroNavBar = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box as="section" w="100%">
-      <Box
-        borderBottomWidth="1px"
-        bg="bg.accent.default"
-        position="relative"
-        zIndex="tooltip"
-      >
+      <Box borderBottomWidth="1px" bg="bg.accent.default" position="relative">
         <Container py="4" flex="justify">
           <HStack justify="space-between" spacing="8">
             <HStack spacing="10">
@@ -41,10 +52,20 @@ export const HeroNavBar = () => {
                 spacing="8"
                 display={{ base: "none", lg: "flex" }}
               >
-                <Button>Contato</Button>
+                <Button as={Link} href="/">
+                  Home
+                </Button>
                 <Button>Promoções</Button>
                 <CategoryCollapse />
-                <Button>Cartão X</Button>
+                <Button>Contato</Button>
+
+                <IconButton
+                  aria-label={""}
+                  icon={<AiOutlineShoppingCart />}
+                  onClick={onOpen}
+                />
+
+                <ShopDrawer onClose={onClose} isOpen={isOpen} />
               </ButtonGroup>
             </HStack>
             <HStack spacing={{ base: "2", md: "4" }}>
