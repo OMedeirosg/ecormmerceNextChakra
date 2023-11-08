@@ -1,16 +1,23 @@
+"use client";
 import {
-  Drawer,
-  DrawerBody,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerOverlay,
-  DrawerContent,
-  DrawerCloseButton,
+  Box,
   Button,
-  Input,
+  Drawer,
+  DrawerCloseButton,
+  DrawerContent,
+  DrawerOverlay,
+  Heading,
+  HStack,
+  Icon,
+  Stack,
+  Text,
+  useColorModeValue,
 } from "@chakra-ui/react";
+import { FiPackage } from "react-icons/fi";
+import { CartItem } from "./CartItem";
 import React from "react";
 import { useDisclosure } from "@chakra-ui/react";
+import { products } from "./_data";
 export const ShopDrawer = ({
   onClose,
   isOpen,
@@ -20,20 +27,54 @@ export const ShopDrawer = ({
 }) => {
   return (
     <>
-      <Drawer onClose={onClose} isOpen={isOpen} zIndex="tooltip">
+      <Drawer onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay />
-        <DrawerContent>
-          <DrawerCloseButton />
-          <DrawerHeader>Create your account</DrawerHeader>
-          <DrawerBody>
-            <Input placeholder="Type here..." />
-          </DrawerBody>
-          <DrawerFooter>
-            <Button variant="outline" mr={3} onClick={onClose}>
-              Cancel
+        <DrawerContent
+          bg={useColorModeValue("white", "gray.800")}
+          overflowY="auto"
+        >
+          <DrawerCloseButton
+            size="lg"
+            right={{ base: "4", md: "8" }}
+            top="4"
+            bg="inherit"
+          />
+          <Stack
+            padding={{ base: "6", md: "10" }}
+            height="full"
+            spacing="8"
+            overflowY="auto"
+          >
+            <Heading size="md">Shopping Cart ({products.length} items)</Heading>
+            <Stack spacing={{ base: "8", md: "10" }}>
+              {products.map((item) => (
+                <CartItem key={products.id} {...item} />
+              ))}
+            </Stack>
+          </Stack>
+          <Stack
+            borderTopWidth="1px"
+            px={{ base: "6", md: "10" }}
+            py="4"
+            spacing="5"
+          >
+            <Stack>
+              <HStack fontSize="xl" fontWeight="semibold">
+                <Text flex="1">Subtotal:</Text>
+                <Text>£597.00</Text>
+              </HStack>
+              <HStack
+                spacing="2"
+                color={useColorModeValue("gray.600", "gray.400")}
+              >
+                <Icon as={FiPackage} />
+                <Text>Shipping + taxes calculated at checkout</Text>
+              </HStack>
+            </Stack>
+            <Button colorScheme="blue" size="lg" fontSize="md">
+              Checkout
             </Button>
-            <Button colorScheme="blue">Save</Button>
-          </DrawerFooter>
+          </Stack>
         </DrawerContent>
       </Drawer>
     </>
