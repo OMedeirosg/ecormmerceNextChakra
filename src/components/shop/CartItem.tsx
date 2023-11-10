@@ -8,6 +8,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { PriceTag } from "./PriceTag";
+import { products } from "./_data";
 
 type CartItemProps = {
   name: string;
@@ -33,7 +34,7 @@ export const CartItem = (props: CartItemProps) => {
   } = props;
 
   return (
-    <Stack direction="row" m="auto" w="100%" h="100%">
+    <Stack direction="row" m="auto" w="100%" h="100%" gap="1">
       <Image
         rounded="md"
         minWidth="24"
@@ -45,7 +46,7 @@ export const CartItem = (props: CartItemProps) => {
         draggable="false"
         loading="lazy"
       />
-      <Stack width="100%" p="1vh" spacing="5">
+      <Stack width="100%" spacing="5">
         <Stack
           direction={{ base: "column", md: "row" }}
           spacing="3"
@@ -56,7 +57,7 @@ export const CartItem = (props: CartItemProps) => {
           </Stack>
           <PriceTag price={price} currency={currency} />
         </Stack>
-        <Flex width="full" justifyContent="space-between" alignItems="center">
+        <Flex w="100%" p="2" gap="2" align="center">
           <Select
             aria-label="Select quantity"
             focusBorderColor={useColorModeValue("blue.500", "blue.200")}
@@ -73,6 +74,7 @@ export const CartItem = (props: CartItemProps) => {
             <option value="4">4</option>
           </Select>
           <Link
+            p="2"
             as="button"
             type="button"
             fontWeight="medium"

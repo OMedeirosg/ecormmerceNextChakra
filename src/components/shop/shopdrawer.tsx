@@ -40,7 +40,12 @@ export const ShopDrawer = ({
             top="4"
             bg="inherit"
           />
-          <Stack padding={{ base: "6", md: "10" }} spacing="8" overflowY="auto">
+          <Stack
+            padding={{ base: "6", md: "10" }}
+            height="full"
+            spacing="8"
+            overflowY="auto"
+          >
             <Heading size="md">Shopping Cart ({products.length} items)</Heading>
             <Stack spacing={{ base: "8", md: "10" }}>
               {products.map((item) => (
