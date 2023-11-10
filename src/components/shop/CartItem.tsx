@@ -8,7 +8,6 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { PriceTag } from "./PriceTag";
-import { products } from "./_data";
 
 type CartItemProps = {
   name: string;
@@ -34,19 +33,19 @@ export const CartItem = (props: CartItemProps) => {
   } = props;
 
   return (
-    <Stack direction="row" spacing="5">
+    <Stack direction="row" m="auto" w="100%" h="100%">
       <Image
         rounded="md"
         minWidth="24"
         maxWidth="24"
         height={{ base: "20", md: "24" }}
         fit="cover"
-        src={products.imageUrl}
+        src={imageUrl}
         alt={name}
         draggable="false"
         loading="lazy"
       />
-      <Stack width="full" spacing="3">
+      <Stack width="100%" p="1vh" spacing="5">
         <Stack
           direction={{ base: "column", md: "row" }}
           spacing="3"
@@ -54,9 +53,6 @@ export const CartItem = (props: CartItemProps) => {
         >
           <Stack spacing="0.5" width="full">
             <Text fontWeight="medium">{name}</Text>
-            <Text color={useColorModeValue("gray.500", "gray.300")}>
-              {description}
-            </Text>
           </Stack>
           <PriceTag price={price} currency={currency} />
         </Stack>

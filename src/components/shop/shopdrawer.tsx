@@ -18,6 +18,7 @@ import { CartItem } from "./CartItem";
 import React from "react";
 import { useDisclosure } from "@chakra-ui/react";
 import { products } from "./_data";
+import Link from "next/link";
 export const ShopDrawer = ({
   onClose,
   isOpen,
@@ -39,12 +40,7 @@ export const ShopDrawer = ({
             top="4"
             bg="inherit"
           />
-          <Stack
-            padding={{ base: "6", md: "10" }}
-            height="full"
-            spacing="8"
-            overflowY="auto"
-          >
+          <Stack padding={{ base: "6", md: "10" }} spacing="8" overflowY="auto">
             <Heading size="md">Shopping Cart ({products.length} items)</Heading>
             <Stack spacing={{ base: "8", md: "10" }}>
               {products.map((item) => (
@@ -71,7 +67,13 @@ export const ShopDrawer = ({
                 <Text>Shipping + taxes calculated at checkout</Text>
               </HStack>
             </Stack>
-            <Button colorScheme="blue" size="lg" fontSize="md">
+            <Button
+              as={Link}
+              href="./checkout"
+              colorScheme="blue"
+              size="lg"
+              fontSize="md"
+            >
               Checkout
             </Button>
           </Stack>
