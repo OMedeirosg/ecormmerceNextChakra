@@ -28,7 +28,7 @@ export const ShopDrawer = ({
 }) => {
   return (
     <>
-      <Drawer onClose={onClose} isOpen={isOpen}>
+      <Drawer onClose={onClose} isOpen={isOpen} size="md">
         <DrawerOverlay />
         <DrawerContent
           bg={useColorModeValue("white", "gray.800")}
