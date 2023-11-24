@@ -6,6 +6,7 @@ import { Inter } from "next/font/google";
 import "../components/shop/ProductCard";
 import { NavBar } from "@/components/navigation/navbar";
 import { Footer } from "@/components/footer/footer";
+import { CartProvider } from "./context/cart-context";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,7 +23,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ChakraProvider>{children}</ChakraProvider>
+        <ChakraProvider>
+          <CartProvider>{children}</CartProvider>
+        </ChakraProvider>
       </body>
     </html>
   );
