@@ -15,10 +15,11 @@ import {
 } from "@chakra-ui/react";
 import { FiPackage } from "react-icons/fi";
 import { CartItem } from "./CartItem";
-import React from "react";
+import React, { useContext } from "react";
 import { useDisclosure } from "@chakra-ui/react";
-import { products } from "./_data";
 import Link from "next/link";
+import { createCipheriv } from "crypto";
+import { CartContext } from "@/app/context/cart-context";
 export const ShopDrawer = ({
   onClose,
   isOpen,
@@ -26,6 +27,8 @@ export const ShopDrawer = ({
   onClose: () => void;
   isOpen: boolean;
 }) => {
+  const { cart, removeCartItem } = useContext(CartContext);
+
   return (
     <>
       <Drawer onClose={onClose} isOpen={isOpen} size="md">
@@ -46,10 +49,16 @@ export const ShopDrawer = ({
             spacing="8"
             overflowY="auto"
           >
-            <Heading size="md">Shopping Cart ({products.length} items)</Heading>
+            <Heading size="md">Shopping Cart ({cart.length} items)</Heading>
             <Stack spacing={{ base: "8", md: "10" }}>
-              {products.map((item) => (
-                <CartItem key={products.id} {...item} />
+              {cart.map((item) => (
+                <CartItem
+                  onClickDelete={() => {
+                    removeCartItem(item.id);
+                  }}
+                  key={item.id}
+                  {...item}
+                />
               ))}
             </Stack>
           </Stack>
