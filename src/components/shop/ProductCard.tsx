@@ -45,7 +45,10 @@ export const ProductCard = (props: Props) => {
           borderRadius="md"
           padding="1.5"
         >
-          <ProductButtonGroup href={`/products/${product.id}`} />
+          <ProductButtonGroup
+            product={product}
+            href={`/products/${product.id}`}
+          />
         </Box>
       </Box>
       <Stack spacing="1">
