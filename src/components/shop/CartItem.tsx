@@ -8,7 +8,6 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { PriceTag } from "./PriceTag";
-import { products } from "./_data";
 
 type CartItemProps = {
   name: string;
