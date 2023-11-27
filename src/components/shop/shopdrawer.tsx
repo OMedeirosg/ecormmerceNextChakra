@@ -20,6 +20,7 @@ import { useDisclosure } from "@chakra-ui/react";
 import Link from "next/link";
 import { createCipheriv } from "crypto";
 import { CartContext } from "@/app/context/cart-context";
+import { PriceTag } from "./PriceTag";
 export const ShopDrawer = ({
   onClose,
   isOpen,
@@ -27,7 +28,7 @@ export const ShopDrawer = ({
   onClose: () => void;
   isOpen: boolean;
 }) => {
-  const { cart, removeCartItem } = useContext(CartContext);
+  const { cart, removeCartItem, priceCartAmount } = useContext(CartContext);
 
   return (
     <>
@@ -71,7 +72,7 @@ export const ShopDrawer = ({
             <Stack>
               <HStack fontSize="xl" fontWeight="semibold">
                 <Text flex="1">Subtotal:</Text>
-                <Text>£597.00</Text>
+                <Text>{priceCartAmount}</Text>
               </HStack>
               <HStack
                 spacing="2"

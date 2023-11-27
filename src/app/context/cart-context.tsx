@@ -12,12 +12,25 @@ export const CartContext = createContext({} as any);
 
 export const CartProvider = ({ children }: any) => {
   const [cart, setCart] = useState<Product[]>([]);
+  // usamos o map para pegar o price e manter o array original
+  const priceCartArray = cart.map((product) => product.price);
+  console.log(priceCartArray, "morte");
+  // reduce precisa de um valor inicial , no caso 0
+  const initialValue = 0;
+
+  //reduce fez a soma dos numeros(price) do array.
+  const priceCartAmount = priceCartArray.reduce(
+    (accumulator, price) => accumulator + price,
+    initialValue
+  );
+
+  console.log(priceCartAmount, "MORTE2");
 
   // criar funçao de adicionar item ao carrinho
   // passar callback para o setState para pegar o valor atualizado.
   const addCartItem = (product: Product) => {
     setCart((prevCart) => [...prevCart, product]);
-    console.log("adicionou ao carrinho", product);
+    console.log("adicionou ao carrinho", cart);
   };
   // criar funçao de remover item do carrinho
   const removeCartItem = (id: string) => {
@@ -31,8 +44,11 @@ export const CartProvider = ({ children }: any) => {
       return filterCart;
     });
   };
+
   return (
-    <CartContext.Provider value={{ cart, addCartItem, removeCartItem }}>
+    <CartContext.Provider
+      value={{ cart, addCartItem, removeCartItem, priceCartAmount }}
+    >
       {children}
     </CartContext.Provider>
   );

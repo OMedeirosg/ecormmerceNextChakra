@@ -77,7 +77,7 @@ export const products = [
   {
     id: "4",
     name: "Silve wolf",
-    currency: "GBP",
+    currency: "USD",
     price: 199,
     imageUrl:
       "https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=680&q=80",
