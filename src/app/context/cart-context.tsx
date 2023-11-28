@@ -12,15 +12,13 @@ export const CartContext = createContext({} as any);
 
 export const CartProvider = ({ children }: any) => {
   const [cart, setCart] = useState<Product[]>([]);
-  // usamos o map para pegar o price e manter o array original
-  const priceCartArray = cart.map((product) => product.price);
-  console.log(priceCartArray, "morte");
+
   // reduce precisa de um valor inicial , no caso 0
   const initialValue = 0;
 
   //reduce fez a soma dos numeros(price) do array.
-  const priceCartAmount = priceCartArray.reduce(
-    (accumulator, price) => accumulator + price,
+  const priceCartAmount = cart.reduce(
+    (accumulator, item) => accumulator + item.price,
     initialValue
   );
 
