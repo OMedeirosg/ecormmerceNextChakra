@@ -7,6 +7,7 @@ import "../components/shop/ProductCard";
 import { NavBar } from "@/components/navigation/navbar";
 import { Footer } from "@/components/footer/footer";
 import { CartProvider } from "./context/cart-context";
+import { AuthProvider } from "./context/AuthCtx";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,7 +25,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ChakraProvider>
-          <CartProvider>{children}</CartProvider>
+          <AuthProvider>
+            <CartProvider>{children}</CartProvider>
+          </AuthProvider>
         </ChakraProvider>
       </body>
     </html>
