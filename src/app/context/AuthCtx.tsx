@@ -10,7 +10,7 @@ import {
   useMemo,
   useState,
 } from "react";
-import { auth } from "./firebase";
+import { auth } from "../config/firebase";
 
 interface AuthCtxType {
   user: User | null | false;
