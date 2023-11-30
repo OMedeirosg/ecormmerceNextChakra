@@ -22,7 +22,7 @@ export const CartProvider = ({ children }: any) => {
     initialValue
   );
 
-  console.log(priceCartAmount, "MORTE2");
+  console.log(priceCartAmount, "oi");
 
   // criar funçao de adicionar item ao carrinho
   // passar callback para o setState para pegar o valor atualizado.
