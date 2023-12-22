@@ -14,6 +14,7 @@ export const Checkout = () => (
   >
     <Flex maxW="8xl" mx="auto" direction={{ base: "column", md: "row" }}>
       <Box
+        border="solid black 2px"
         flex="1"
         bg={useColorModeValue("white", "gray.800")}
         px={{ base: "4", md: "8", lg: "12", xl: "20" }}
@@ -26,6 +27,7 @@ export const Checkout = () => (
         </Stack>
       </Box>
       <Box
+        border="solid green 2px"
         flex="1"
         maxW={{ lg: "md", xl: "40rem" }}
         bg={{ base: useColorModeValue("white", "gray.800"), md: "inherit" }}
