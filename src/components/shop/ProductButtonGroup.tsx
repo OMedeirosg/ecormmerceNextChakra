@@ -1,4 +1,4 @@
-import { CartContext } from "@/app/context/cart-context";
+import { CartContext } from "@/context/cart-context";
 import {
   ButtonGroup,
   Icon,

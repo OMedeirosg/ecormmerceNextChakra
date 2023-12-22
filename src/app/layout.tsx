@@ -6,8 +6,8 @@ import { Inter } from "next/font/google";
 import "../components/shop/ProductCard";
 import { NavBar } from "@/components/navigation/navbar";
 import { Footer } from "@/components/footer/footer";
-import { CartProvider } from "./context/cart-context";
-import { AuthProvider } from "./context/AuthCtx";
+import { CartProvider } from "../context/cart-context";
+import { AuthProvider } from "../context/AuthCtx";
 
 const inter = Inter({ subsets: ["latin"] });
 

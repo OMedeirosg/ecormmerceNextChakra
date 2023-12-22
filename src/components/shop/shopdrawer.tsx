@@ -19,8 +19,10 @@ import React, { useContext } from "react";
 import { useDisclosure } from "@chakra-ui/react";
 import Link from "next/link";
 import { createCipheriv } from "crypto";
-import { CartContext } from "@/app/context/cart-context";
+import { CartContext } from "@/context/cart-context";
 import { PriceTag } from "./PriceTag";
+import { useSession } from "@/context/AuthCtx";
+import { useRouter } from "next/navigation";
 export const ShopDrawer = ({
   onClose,
   isOpen,
@@ -29,7 +31,8 @@ export const ShopDrawer = ({
   isOpen: boolean;
 }) => {
   const { cart, removeCartItem, priceCartAmount } = useContext(CartContext);
-
+  const router = useRouter();
+  const { user } = useSession();
   return (
     <>
       <Drawer onClose={onClose} isOpen={isOpen} size="md">
@@ -83,8 +86,13 @@ export const ShopDrawer = ({
               </HStack>
             </Stack>
             <Button
-              as={Link}
-              href="./checkout"
+              onClick={() => {
+                if (!user) {
+                  router.push("/login");
+                } else {
+                  router.push("/checkout");
+                }
+              }}
               colorScheme="blue"
               size="lg"
               fontSize="md"

@@ -12,7 +12,7 @@ export const CartContext = createContext({} as any);
 
 export const CartProvider = ({ children }: any) => {
   const [cart, setCart] = useState<Product[]>([]);
-  console.log("quaz", cart);
+
   // reduce precisa de um valor inicial , no caso 0
   const initialValue = 0;
 

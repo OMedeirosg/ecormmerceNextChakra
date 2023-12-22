@@ -30,7 +30,7 @@ const initFirebase = (config: any) => {
 
   return firebaseApp;
 };
-
+//projeto ja iniciado
 export const app = initFirebase(config);
 
 export const auth = getAuth(app);

@@ -12,7 +12,7 @@ import {
 import { HiOutlineChat, HiOutlineMail, HiOutlinePhone } from "react-icons/hi";
 import { Product, products } from "../shop/_data";
 import { ProductItem } from "./ProductItem";
-import { CartContext } from "@/app/context/cart-context";
+import { CartContext } from "@/context/cart-context";
 import { useContext } from "react";
 
 export const OrderSummary = () => {
@@ -30,18 +30,6 @@ export const OrderSummary = () => {
             </>
           ))}
         </Stack>
-        <Stack spacing={{ base: "8", md: "10" }}>
-          {cart.map((item: Product) => (
-            <CartItem
-              onClickDelete={() => {
-                removeCartItem(item.id);
-              }}
-              key={item.id}
-              {...item}
-            />
-          ))}
-        </Stack>
-
         <HStack spacing="6">
           <Input
             name="discount"

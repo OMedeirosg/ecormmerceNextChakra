@@ -16,12 +16,14 @@ import {
 import { Logo } from "./Logo";
 import { GoogleIcon } from "./ProviderIcons";
 import { useState } from "react";
-import { auth } from "@/app/config/firebase";
+import { auth } from "@/config/firebase";
+import { useRouter } from "next/navigation";
 type UserDTO = {
   email: string;
   senha: string;
 };
 export const LoginForm = () => {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -32,7 +34,7 @@ export const LoginForm = () => {
         // Signed in
         const user = userCredential.user;
         console.log("NEWUSER", user);
-        // ...
+        router.push("/checkout");
       })
       .catch((error) => {
         const errorCode = error.code;
