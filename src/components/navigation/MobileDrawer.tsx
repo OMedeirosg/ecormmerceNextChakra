@@ -9,6 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { CategoryCollapse } from "./CategoryCollapse";
 import { ToggleButton } from "./ToggleButton";
+import Link from "next/link";
 
 export const MobileDrawer = () => {
   const { isOpen, onToggle, onClose } = useDisclosure();
@@ -24,8 +25,14 @@ export const MobileDrawer = () => {
         <DrawerContent>
           <DrawerBody mt="72px" p="4">
             <Stack spacing="1">
-              <Button size="lg" variant="tertiary" justifyContent="start">
-                Dashboard
+              <Button
+                as={Link}
+                href="/"
+                size="lg"
+                variant="tertiary"
+                justifyContent="start"
+              >
+                Home
               </Button>
               <Button size="lg" variant="tertiary" justifyContent="start">
                 Analysis

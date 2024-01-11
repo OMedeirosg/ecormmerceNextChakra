@@ -17,7 +17,7 @@ import { useContext } from "react";
 
 export const OrderSummary = () => {
   const { cart, removeCartItem, priceCartAmount } = useContext(CartContext);
-  console.log("quaaz", cart);
+
   return (
     <Stack spacing={{ base: "6", md: "10" }}>
       <Heading size="md">Order Summary</Heading>

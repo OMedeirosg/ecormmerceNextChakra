@@ -85,6 +85,7 @@ export const ShopDrawer = ({
                 <Text>Shipping + taxes calculated at checkout</Text>
               </HStack>
             </Stack>
+            {/* redireciona baseado no estado da sessao */}
             <Button
               onClick={() => {
                 if (!user) {
