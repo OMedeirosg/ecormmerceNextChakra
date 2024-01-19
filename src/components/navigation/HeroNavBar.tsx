@@ -58,7 +58,7 @@ export const HeroNavBar = () => {
 
   console.log(user, "User 2");
   return (
-    <Box as="section" w="100%">
+    <Flex w="100%" align="center" justify="center" position="relative">
       <Box borderBottomWidth="1px" bg="bg.accent.default" position="relative">
         <Container py="4" flex="justify">
           <HStack justify="space-between" spacing="8">
@@ -126,6 +126,6 @@ export const HeroNavBar = () => {
           </HStack>
         </Container>
       </Box>
-    </Box>
+    </Flex>
   );
 };

@@ -48,10 +48,10 @@ export const CartItem = (props: CartItemProps) => {
       <Stack width="100%" spacing="5">
         <Stack
           direction={{ base: "column", md: "row" }}
-          spacing="3"
+          spacing="6"
           alignItems="flex-start"
         >
-          <Stack spacing="0.5" width="full">
+          <Stack spacing="3" width="full">
             <Text fontWeight="medium">{name}</Text>
           </Stack>
           <PriceTag price={price} currency={currency} />

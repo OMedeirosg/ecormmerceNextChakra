@@ -6,6 +6,7 @@ import {
   DrawerCloseButton,
   DrawerContent,
   DrawerOverlay,
+  Flex,
   Heading,
   HStack,
   Icon,
@@ -73,10 +74,10 @@ export const ShopDrawer = ({
             spacing="5"
           >
             <Stack>
-              <HStack fontSize="xl" fontWeight="semibold">
+              <Flex fontSize="xl" fontWeight="semibold">
                 <Text flex="1">Subtotal:</Text>
-                <Text>{priceCartAmount}</Text>
-              </HStack>
+                <Text>${priceCartAmount}</Text>
+              </Flex>
               <HStack
                 spacing="2"
                 color={useColorModeValue("gray.600", "gray.400")}

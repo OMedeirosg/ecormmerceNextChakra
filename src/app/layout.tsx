@@ -8,8 +8,12 @@ import { NavBar } from "@/components/navigation/navbar";
 import { Footer } from "@/components/footer/footer";
 import { CartProvider } from "../context/cart-context";
 import { AuthProvider } from "../context/AuthCtx";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryProvider } from "@/context/ReactQueryProvider";
 
 const inter = Inter({ subsets: ["latin"] });
+
+const queryClient = new QueryClient();
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -24,11 +28,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ChakraProvider>
-          <AuthProvider>
-            <CartProvider>{children}</CartProvider>
-          </AuthProvider>
-        </ChakraProvider>
+        <ReactQueryProvider>
+          <ChakraProvider>
+            <AuthProvider>
+              <CartProvider>{children}</CartProvider>
+            </AuthProvider>
+          </ChakraProvider>
+        </ReactQueryProvider>
       </body>
     </html>
   );

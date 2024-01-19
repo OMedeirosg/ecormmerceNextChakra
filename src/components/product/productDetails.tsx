@@ -24,8 +24,11 @@ import { QuantityPicker } from "./QuantityPicker";
 import { Share } from "./Share";
 import { SizePicker } from "./SizePicker";
 import { Review } from "../review/reviews";
-
+import { useContext } from "react";
+import { CartContext } from "@/context/cart-context";
+import { products } from "../shop/_data";
 export const ProductDetails = ({ product }: { product: any }) => {
+  const { addCartItem } = useContext(CartContext);
   return (
     <Box
       maxW="7xl"
@@ -51,12 +54,7 @@ export const ProductDetails = ({ product }: { product: any }) => {
                 </Heading>
               </Stack>
               <Stack spacing="1">
-                <PriceTag
-                  price={229}
-                  salePrice={199}
-                  currency="GBP"
-                  rootProps={{ fontSize: "xl" }}
-                />
+                <Text fontSize={28}>${product.price}</Text>
                 <HStack spacing="2" alignSelf="baseline">
                   <Rating defaultValue={4} size="sm" />
                   <Link
@@ -137,7 +135,13 @@ export const ProductDetails = ({ product }: { product: any }) => {
                 </Button>
               </Box>
             </HStack>
-            <Button colorScheme="blue" size="lg">
+            <Button
+              colorScheme="blue"
+              size="lg"
+              onClick={() => {
+                addCartItem(product);
+              }}
+            >
               Add to cart
             </Button>
             <Promos />
