@@ -25,14 +25,11 @@ import { useQuery } from "@tanstack/react-query";
 import { HiOutlineChat, HiOutlineMail, HiOutlinePhone } from "react-icons/hi";
 
 export const OrderForms = () => {
-  const { cart, removeCartItem, priceCartAmount } = useContext(CartContext);
-
   const queryOrders = async () => {
     const querySnapshot = await getDocs(collection(db, "orders"));
 
     const orders = querySnapshot.docs.map((doc) => {
       console.log(doc.id, "=>", doc.data());
-
       return doc.data();
     });
 
